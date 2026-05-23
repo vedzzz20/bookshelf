@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookshelf</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <div class="login-logo">Bookshelf</div>
+    <div class="login-tagline">Your reading life, catalogued</div>
+    <div class="login-card">
+      <h2>Sign in</h2>
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="login-user" placeholder="your username" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="login-pass" placeholder="••••••••" />
+      </div>
+      <button class="btn-primary" id="login-btn">Sign in →</button>
+      <div class="login-err" id="login-err"></div>
+    </div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="main-app" class="hidden">
+    <div class="header">
+      <div class="header-logo">Bookshelf</div>
+      <div class="header-user">
+        <div class="avatar" id="user-avatar"></div>
+        <span class="username-label" id="user-label"></span>
+        <button class="btn-logout" id="logout-btn">Sign out</button>
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+      <div class="tab active" data-tab="search"><i class="ti ti-search"></i> Find books</div>
+      <div class="tab" data-tab="shelf"><i class="ti ti-books"></i> My shelf</div>
+    </div>
+
+    <!-- SEARCH PANEL -->
+    <div id="search-panel" class="panel active">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search by title or author…" />
+        <button class="btn-search" id="search-btn">Search</button>
+      </div>
+      <div id="search-results">
+        <div class="search-hint">
+          <i class="ti ti-book-2"></i>
+          <p>Search any book to add it to your shelf</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHELF PANEL -->
+    <div id="shelf-panel" class="panel hidden">
+      <div class="stats-bar" id="stats-bar"></div>
+      <div class="shelf-header">
+        <div class="shelf-title">My shelf</div>
+        <div class="shelf-count" id="shelf-count"></div>
+      </div>
+      <div class="shelf-filters">
+        <div class="filter-chip active" data-filter="all">All</div>
+        <div class="filter-chip" data-filter="reading">Reading</div>
+        <div class="filter-chip" data-filter="read">Read</div>
+        <div class="filter-chip" data-filter="want">Want to read</div>
+        <div class="filter-chip" data-filter="dnf">Did not finish</div>
+      </div>
+      <div class="shelf-list" id="shelf-list"></div>
+    </div>
+  </div>
+
+  <!-- ADD BOOK MODAL -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal">
+      <h3>Add to shelf</h3>
+      <div class="modal-book-title" id="modal-title"></div>
+      <div class="modal-book-author" id="modal-author"></div>
+      <div class="field">
+        <label>Reading status</label>
+        <select id="modal-status">
+          <option value="want">Want to read</option>
+          <option value="reading">Currently reading</option>
+          <option value="read">Read</option>
+          <option value="dnf">Did not finish</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Rating</label>
+        <div class="star-rating" id="star-rating">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Notes</label>
+        <textarea id="modal-note" placeholder="Your thoughts, quotes, impressions…"></textarea>
+      </div>
+      <div class="modal-btns">
+        <button class="btn-cancel" id="modal-cancel">Cancel</button>
+        <button class="btn-save" id="modal-save">Add to shelf</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="src/users.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>
